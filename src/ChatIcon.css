@@ -1,0 +1,27 @@
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Slightly reduced size for balance */
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--secondary-color);
+    box-shadow: 0 6px 18px var(--shadow-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.chat-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}

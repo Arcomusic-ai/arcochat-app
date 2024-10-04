@@ -1,0 +1,249 @@
+.message {
+  position: relative;
+  display: inline-block;
+  max-width: 75%; /* Reduced from 90% to 75% */
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  line-height: 1.5;
+  word-break: break-word;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message.user {
+  background-color: var(--user-message-color);
+  color: var(--secondary-color);
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+  max-width: 75%; /* Reduced from 90% to 75% */
+}
+
+.message.assistant {
+  background-color: var(--assistant-message-color);
+  color: var(--text-color);
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  padding: 15px 19px; /* Increased padding for assistant messages */
+}
+
+.message.system {
+  background-color: #ffeaa7;
+  color: #2d3436;
+  align-self: center;
+  border-radius: var(--border-radius);
+}
+
+.message p {
+  margin: 0;
+}
+
+.message p + p {
+  margin-top: 8px;
+}
+
+.message pre {
+  margin: 8px 0;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.message code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Typing Indicator Styling */
+.typing-indicator {
+  font-style: italic;
+  opacity: 0.7;
+  color: var(--dark-gray);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .message {
+    max-width: 95%;
+  }
+}
+
+.copy-button {
+  position: absolute;
+  bottom: -28px;
+  left: 4px;
+  background: none;
+  border: none;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.message:hover .copy-button,
+.copy-button:focus {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.copy-button:hover {
+  color: var(--primary-color);
+}
+
+.copy-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.copied-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-gray);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.copy-button:focus .copied-tooltip,
+.copy-button:hover .copied-tooltip {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .copy-button {
+    opacity: 0.7;
+  }
+}
+
+/* Sample Question Buttons */
+.sample-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sample-question-button {
+  background-color: #ffffff;  /* Clean white background */
+  border: 1px solid #e0e4e8;  /* Subtle, light border */
+  border-radius: 12px;  /* Slightly less rounded for a modern look */
+  padding: 12px 18px;
+  font-size: 14px;
+  color: #4a5568;  /* Softer, more neutral text color */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Very subtle shadow */
+}
+
+.sample-question-button:hover {
+  background-color: #f7fafc;  /* Extremely subtle background change on hover */
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sample-question-button:active {
+  transform: translateY(1px);  /* Subtle press effect */
+}
+
+.question-text {
+  flex: 1;
+  padding-right: 12px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.question-arrow {
+  font-size: 18px;
+  color: #718096;  /* Neutral arrow color */
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sample-question-button:hover .question-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: #4299e1;  /* Blue accent on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+  .sample-questions {
+    margin-top: 16px;
+  }
+
+  .sample-question-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ... rest of the existing styles ... */
+
+.message.assistant ol {
+  counter-reset: item;
+  padding-left: 0;
+  list-style-type: none;
+  margin-block: 0;
+}
+
+.message.assistant ol > li {
+  counter-increment: item;
+  position: relative;
+  padding-left: 2.5em; /* Increased from 2em to 2.5em */
+  margin-bottom: 1em; /* Increased from 0.5em to 1em */
+}
+
+.message.assistant ol > li::before {
+  content: counter(item);
+  background-color: #d6e9ed;
+  color: #333;
+  font-weight: bold;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0.25em; /* Added 0.25em of space to the left */
+  top: 0;
+}
+
+/* Add more space after titles */
+.message.assistant ol > li > p:first-child {
+  margin-bottom: 0.5em;
+}
+
+/* Add space between bullet points */
+.message.assistant ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.message.assistant ul > li {
+  margin-bottom: 0.5em;
+}
+
+.message-content > h3 {
+  margin-bottom: 0;
+}
