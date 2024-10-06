@@ -17,7 +17,7 @@ export const MessageList = ({ messages, isTyping, onSampleQuestionClick }) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages])
+  }, [])
 
   return (
     <div className="message-list">
